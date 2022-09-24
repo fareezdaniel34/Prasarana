@@ -69,23 +69,23 @@ $q2 = mysqli_query($conn, $selectUser) or die ("no data".mysqli_error($conn));
   
   
     <div id="mydiv">
+        <?php 
+          while($q3 = mysqli_fetch_array($q2, MYSQLI_ASSOC)) {
+              extract($q3);
+          ?>
       <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
       <!-- <div id="mydivheader"></div> -->
       <div class="dropdown">
         <div class="btn-group">
         <button id="SectionName" style="display:none; font-weight: bold; font-size: x-small; background-color: #54bab9;"><</button>
-        <?php 
-          while($q3 = mysqli_fetch_array($q2, MYSQLI_ASSOC)) {
-              extract($q3);
-          ?>
 
         <button onclick="myFunction()" id="train_id" class="dropbtn" style="font-weight: bold; max-height: 10px; max-width:80px; font-size: x-small;"><?php echo $train_id?></button>
         <button id="SectionNames" style="display:none; font-weight: bold; font-size: x-small; background-color: #54bab9;">></button>
       </div>
         <div id="myDropdown" class="dropdown-content">
-          <a onclick="ShowAndHide()">Left</a>
+          <a class="triangle-left"onclick="ShowAndHide()">Left</a>
           <a onclick="ShowAndHides()">Right</a>
-          <a>Delete</a>
+          <a onclick="location.href='delete.php?idDelete=<?php echo $id ?>'" value="Delete">Delete</a>
         </div>
       </div>
     </div>
@@ -132,7 +132,7 @@ function ShowAndHides() {
               Add Train Name:<input type="text" name="train_id" placeholder="Enter train name" required>
               <input type="submit" name="btnSubmit"></input>
             </div>
-        </section>
+      </section>
         
         
       </div>
@@ -210,7 +210,7 @@ function ShowAndHides() {
     <div class="box">
       <script type="text/javascript" src="https://cdn.rawgit.com/asvd/dragscroll/master/dragscroll.js"></script>
       <div class="dragscroll" style="width:1920px; height: 1080px; overflow: scroll; cursor: grab; cursor : -o-grab; cursor : -moz-grab; cursor : -webkit-grab;">
-      <img src="amgmap.png"id="geeks" GFG="250" alt="Geeksforgeeks">
+      <img src="amgmap1.png"id="geeks" GFG="250" alt="Geeksforgeeks">
 </div>
 
     </div>

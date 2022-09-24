@@ -7,15 +7,9 @@ include("config.php");
 $idDelete = $_GET['idDelete'];
 
 
-$truncatetable= mysql_query("TRUNCATE TABLE train");
+$f1 = "DELETE FROM train WHERE id=$idDelete";
+$f2 = mysqli_query($conn,$f1) or die(mysqli_error());
 
-if($truncatetable !== FALSE)
-{
-   echo("All rows have been deleted.");
-}
-else
-{
-   echo("No rows have been deleted.");
-}
-
+$_SESSION['delete'] = "Item has been deleted";
+header("location: AMGLine.php");
 ?>  

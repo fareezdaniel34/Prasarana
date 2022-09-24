@@ -168,6 +168,13 @@
   height: 100px;
   margin-bottom: 200px;
 }
+    #triangle-left {
+      width: 0;
+      height: 0;
+      border-top: 50px solid transparent;
+      border-right: 100px solid red;
+      border-bottom: 50px solid transparent;
+    }
 
 #mydivheader {
   padding: 10px;
@@ -202,13 +209,7 @@
   cursor: grab;
   overflow: auto;
 }
-.triangle-left {
-	width: 0;
-	height: 0;
-	border-top: 25px solid transparent;
-	border-right: 50px solid #555;
-	border-bottom: 25px solid transparent;
-}
+
 
 
 

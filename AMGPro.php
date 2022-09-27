@@ -9,7 +9,7 @@
 
         if(mysqli_query($conn,$sql)){
             echo "<script>alert('Train ID not created')</script>";
-            header("Location: AMGLine.php");
+            header("Location: AMGL.php");
         }
 
 

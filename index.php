@@ -37,7 +37,7 @@
         >
         <!-- Float links to the right. Hide them on small screens -->
         <div class="w3-right w3-hide-small">
-          <a href="./AMGLine.php" class="w3-bar-item w3-button">Rail</a>
+          <a href="./AMGL.php" class="w3-bar-item w3-button">Rail</a>
           <a href="#about" class="w3-bar-item w3-button">About</a>
           <a href="./login.php" class="w3-bar-item w3-button">Login</a>
         </div>

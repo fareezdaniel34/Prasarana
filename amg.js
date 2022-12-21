@@ -62,6 +62,15 @@ function zoomout() {
 
 } 
 
+function ShowAndHideTR2() {
+  var x = document.getElementById('Section1');
+  if (x.style.display == 'none') {
+      x.style.display = 'inline-block';
+  } else {
+      x.style.display = 'none';
+  }
+}
+
 
 
 function take_screenshot()

@@ -2,6 +2,7 @@
   "dependencies": {
     "@panzoom/panzoom": "^4.5.1",
     "html2canvas": "^1.4.1",
-    "metro4": "^4.5.1"
+    "metro4": "^4.5.1",
+    "metro4-dist": "^4.5.0"
   }
 }

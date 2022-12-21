@@ -8,11 +8,70 @@
   </head>
   <body>
   <style>
-    body,
-    html {
-      height: 100%;
-      margin: 0;
-    }
+body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
     
     .bg {
       /* The image used */
@@ -30,19 +89,20 @@
 
 
     <!-- Navbar (sit on top) -->
-    <div class="w3-top">
-      <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-        <a href="./index.html" class="w3-bar-item w3-button"
-          ><b>Ampang</b> Rapid Rail</a
-        >
-        <!-- Float links to the right. Hide them on small screens -->
-        <div class="w3-right w3-hide-small">
-          <a href="./AMGL.php" class="w3-bar-item w3-button">Rail</a>
-          <a href="#about" class="w3-bar-item w3-button">About</a>
-          <a href="./login.php" class="w3-bar-item w3-button">Login</a>
-        </div>
-      </div>
+    <div class="navbar">
+  <a href="login.php">Login</a>
+  <a href="#news">About</a>
+  <div class="dropdown">
+    <button class="dropbtn">Rail 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="AmgL.php">Ampang Line</a>
+      <a href="#">Ampang Depot</a>
+      <a href="#">KKSB Depot</a>
     </div>
+  </div> 
+</div>
 
     <div class="bg">
       <div>
@@ -56,9 +116,6 @@
             width: 50%;
           "
         />
-        <div>
-          <a href="#" class="button">Link Button</a>
-        </div>
       </div>
     </div>
   </form>

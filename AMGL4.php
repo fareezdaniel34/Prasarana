@@ -13,7 +13,8 @@
         }
 
         .drag {
-
+            display: none;
+            z-index: 100px;
             float: left;
             position: relative;
             cursor: all-scroll;
@@ -43,11 +44,13 @@
 
         #menu__toggle:checked+.menu__btn>span {
             transform: rotate(45deg);
+            
         }
 
         #menu__toggle:checked+.menu__btn>span::before {
             top: 0;
             transform: rotate(0deg);
+
         }
 
         #menu__toggle:checked+.menu__btn>span::after {
@@ -76,7 +79,7 @@
             width: 26px;
             height: 26px;
             cursor: pointer;
-            z-index: 1;
+            z-index: 120 !important;
         }
 
         .menu__btn>span,
@@ -88,6 +91,7 @@
             height: 2px;
             background-color: black;
             transition-duration: 0.25s;
+
         }
 
         .menu__btn>span::before {
@@ -103,6 +107,7 @@
         .menu__box {
             display: block;
             position: fixed;
+            z-index: 100 !important;
             top: 0;
             left: -100%;
             width: 300px;
@@ -200,6 +205,18 @@
         .dropdown:hover .dropbtn {
             background-color: #54bab9;
         }
+
+        .drag-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .add-train-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
     </style>
 
 </head>
@@ -217,7 +234,26 @@
                 <div><a class="menu__item" href="AMGL2.php">Ampang Line</a></div>
                 <div><a class="menu__item" href="index.php">KKSB Depot</a></div>
                 <div><a class="menu__item" href="index.php">Ampang Depot</a></div>
-                <div><button class="w3-button w3-teal btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin: auto; display: grid;">Add Train</button></div><br>
+                <div class="add-train-container">
+                    <select id="select-train" name="train">
+                        <option value="TR01">TR01</option>
+                        <option value="TR02">TR02</option>
+                        <option value="TR03">TR03</option>
+                        <option value="TR04">TR04</option>
+                        <option value="TR05">TR05</option>
+                        <option value="TR06">TR06</option>
+                        <option value="TR07">TR07</option>
+                        <option value="TR08">TR08</option>
+                        <option value="TR09">TR09</option>
+                        <option value="TR10">TR10</option>
+                        <option value="TR11">TR11</option>
+                        <option value="TR12">TR12</option>
+                        <option value="TR13">TR13</option>
+                        <option value="TR14">TR14</option>
+                        <option value="TR15">TR15</option>
+                    </select>
+                    <button class="w3-button w3-teal btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="addTrain()">Add Train</button>
+                </div><br>
                 <div><input type="button" class="button1" style="margin: auto; display: grid;" value="Toggle Fullscreen" onclick="document.documentElement.requestFullscreen()" /></div>
                 <br>
                 <div>
@@ -231,10 +267,8 @@
 
             </div>
 
-
-
         </div>
-        <a>
+        <div class="drag-container">
             <div class='drag'>TR01</div>
             <div class='drag'>TR02</div>
             <div class='drag'>TR03</div>
@@ -250,9 +284,9 @@
             <div class='drag'>TR13</div>
             <div class='drag'>TR14</div>
             <div class='drag'>TR15</div>
-        </a>
+        </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="https://cdnjs. cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
 
         <script>
@@ -278,13 +312,34 @@
             }
         </script>
         <script>
+
+        
 function myFunction() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+
+  console.log('object');
+  var train = document.getElementsByClassName("drag");
+
+  for (let i = 0; i < train.length; i++) {
+    train[i].style.display = 'none';
   }
+//   if (x.style.display === "none") {
+//     x.style.display = "block";
+//   } else {
+//     x.style.display = "none";
+//   }
+}
+
+const addTrain = () => {
+    const selectedTrain = document.getElementById("select-train").value;
+    var train = document.getElementsByClassName("drag");
+
+    for (let i = 0; i < train.length; i++) {
+        // console.log(selectedTrain);
+        // console.log(train[i].innerHTML);q
+        if (train[i].innerHTML == selectedTrain) {
+            train[i].style.display = 'block';
+        }
+    }
 }
 </script>
 </body>

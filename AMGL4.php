@@ -232,8 +232,8 @@
             <div class="menu__box">
                 <div><a class="menu__item" href="index.php">Home</a></div>
                 <div><a class="menu__item" href="AMGL2.php">Ampang Line</a></div>
-                <div><a class="menu__item" href="index.php">KKSB Depot</a></div>
-                <div><a class="menu__item" href="index.php">Ampang Depot</a></div>
+                <div><a class="menu__item" href="AMGL3.php">KKSB Depot</a></div>
+                <div><a class="menu__item" href="AMGL4.php">Ampang Depot</a></div>
                 <div class="add-train-container">
                     <select id="select-train" name="train">
                         <option value="TR01">TR01</option>

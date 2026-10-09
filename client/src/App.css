@@ -1,0 +1,206 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top bar: blue with red stripe */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(90deg, var(--rkl-blue-dark), var(--rkl-blue));
+  border-bottom: 4px solid var(--rkl-red);
+}
+.brand { font-weight: 700; color: #fff; }
+.tabs { display: flex; gap: 0.25rem; flex: 1; flex-wrap: wrap; }
+.tab {
+  background: transparent;
+  color: #dbe7f7;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.tab:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.tab.active { background: var(--rkl-red); color: #fff; }
+.user { display: flex; align-items: center; gap: 0.6rem; color: #dbe7f7; }
+.link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Buttons and inputs */
+.btn {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) { background: var(--rkl-blue); border-color: var(--rkl-blue); }
+.btn:disabled { opacity: 0.45; cursor: default; }
+.btn-primary { background: var(--rkl-red); border-color: var(--rkl-red); color: #fff; }
+.btn-primary:hover:not(:disabled) { background: var(--rkl-red-dark); border-color: var(--rkl-red-dark); }
+.btn-danger { color: #ff8a9b; border-color: #6b1a2a; }
+.btn-danger:hover:not(:disabled) { background: var(--rkl-red-dark); border-color: var(--rkl-red-dark); color: #fff; }
+
+input,
+select {
+  background: #071324;
+  color: inherit;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.45rem 0.6rem;
+}
+input:focus,
+select:focus {
+  outline: 2px solid var(--rkl-blue);
+  outline-offset: 1px;
+}
+
+.error {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  background: #3a0d18;
+  color: #ffd0d8;
+  border: 1px solid var(--rkl-red-dark);
+  border-radius: 6px;
+}
+.page-error { margin: 1rem 1rem 0; }
+
+/* Login */
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: radial-gradient(circle at top, var(--rkl-blue-dark), var(--bg) 70%);
+}
+.login-card {
+  width: min(360px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 5px solid var(--rkl-red);
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+.login-card h1 { margin: 0; font-size: 1.3rem; text-align: center; }
+.login-card label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.9rem; color: var(--muted); }
+.login-logo {
+  width: 150px;
+  align-self: center;
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+/* Board */
+.board-page { display: flex; flex-direction: column; gap: 0.75rem; padding: 1rem; }
+.toolbar { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.toolbar h1 {
+  margin: 0 auto 0 0;
+  font-size: 1.25rem;
+  padding-left: 0.6rem;
+  border-left: 4px solid var(--rkl-red);
+}
+.add-train { display: flex; gap: 0.5rem; }
+
+.board {
+  position: relative;
+  width: 100%;
+  background: #071324;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  user-select: none;
+}
+.board-image { display: block; width: 100%; height: auto; border-radius: 8px; pointer-events: none; }
+.board--placeholder {
+  aspect-ratio: 16 / 9;
+  background-image:
+    linear-gradient(#13294a 1px, transparent 1px),
+    linear-gradient(90deg, #13294a 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.board-message {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+/* Train cards: Ampang Line LRT, no background box */
+.train { position: absolute; z-index: 1; }
+.train.menu-open { z-index: 10; }
+
+.train-body {
+  display: block;
+  width: 96px;
+  height: 38.4px;
+  cursor: grab;
+  touch-action: none;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+}
+.train-body.dragging {
+  cursor: grabbing;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.6));
+}
+.train-body:focus-visible { outline: 3px solid #ffd166; outline-offset: 2px; border-radius: 6px; }
+
+.train-svg { display: block; overflow: visible; }
+.train-body-fill { fill: #f1f3f5; }
+.train-red      { fill: var(--rkl-red); }
+.train-glass    { fill: #111827; }
+.train-stripe   { fill: var(--rkl-blue); }
+.train-bogie    { fill: #374151; }
+.train-wheel    { fill: #1f2937; stroke: #9db3d1; stroke-width: 1; }
+.train-light    { fill: #fff7d6; }
+.train-outline {
+  fill: none;
+  stroke: #6b7280;
+  stroke-width: 1;
+  transition: stroke 0.15s, stroke-width 0.15s;
+}
+/* Yellow outline when hovered, dragged or selected */
+.train-body:hover .train-outline,
+.train-body.dragging .train-outline,
+.train.menu-open .train-outline { stroke: #ffd166; stroke-width: 1.6; }
+
+.train-code {
+  fill: var(--rkl-blue-dark);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+.train-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.45rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--rkl-blue);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+.menu-row { display: flex; gap: 0.35rem; }
+.menu-row .btn { flex: 1; }
+.meta { margin: 0.15rem 0 0; font-size: 0.75rem; color: var(--muted); }

@@ -15,6 +15,8 @@ export default function Board({ location, locations }: Props) {
   const [openMenuId, setOpenMenuId] = useState<number | null>(null);
   const [newCode, setNewCode] = useState("");
   const [imageOk, setImageOk] = useState(Boolean(location.backgroundImage));
+  const [pendingDelete, setPendingDelete] = useState<Train | null>(null);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -47,8 +49,14 @@ export default function Board({ location, locations }: Props) {
     }
   }
 
-  async function deleteTrain(train: Train) {
-    if (!window.confirm(`Delete ${train.trainCode}? This cannot be undone.`)) return;
+  function cancelDelete() {
+    if (!deleting) setPendingDelete(null);
+  }
+
+  async function confirmDelete() {
+    const train = pendingDelete;
+    if (!train) return;
+    setDeleting(true);
     setError(null);
     try {
       await api.deleteTrain(train.id);
@@ -56,6 +64,9 @@ export default function Board({ location, locations }: Props) {
       setOpenMenuId(null);
     } catch (err) {
       setError(`Could not delete ${train.trainCode}: ${errorText(err)}`);
+    } finally {
+      setDeleting(false);
+      setPendingDelete(null);
     }
   }
 
@@ -127,10 +138,44 @@ export default function Board({ location, locations }: Props) {
             onMove={(x, y) => void saveChange(train, { x, y })}
             onDirection={(direction) => void saveChange(train, { direction })}
             onMoveTo={(locationId) => void saveChange(train, { locationId })}
-            onDelete={() => void deleteTrain(train)}
+            onDelete={() => setPendingDelete(train)}
           />
         ))}
       </div>
+
+      {pendingDelete && (
+        <div className="modal-backdrop" onPointerDown={cancelDelete}>
+          <div
+            className="modal"
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="delete-title"
+            aria-describedby="delete-desc"
+            onPointerDown={(e) => e.stopPropagation()}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") cancelDelete();
+            }}
+          >
+            <h2 id="delete-title">Delete {pendingDelete.trainCode}?</h2>
+            <p id="delete-desc">
+              This removes the train and its movement history. It cannot be undone.
+            </p>
+            <div className="modal-actions">
+              <button type="button" className="btn" autoFocus disabled={deleting} onClick={cancelDelete}>
+                Cancel
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                disabled={deleting}
+                onClick={() => void confirmDelete()}
+              >
+                {deleting ? "Deleting…" : "Delete"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

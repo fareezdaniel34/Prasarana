@@ -204,3 +204,25 @@ select:focus {
 .menu-row { display: flex; gap: 0.35rem; }
 .menu-row .btn { flex: 1; }
 .meta { margin: 0.15rem 0 0; font-size: 0.75rem; color: var(--muted); }
+/* In-page confirm dialog (keeps fullscreen on) */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(3, 10, 20, 0.6);
+}
+.modal {
+  width: min(380px, 100%);
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--rkl-red);
+  border-radius: 10px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+.modal h2 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+.modal p { margin: 0 0 1rem; color: var(--muted); }
+.modal-actions { display: flex; justify-content: flex-end; gap: 0.5rem; }

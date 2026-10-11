@@ -4,7 +4,6 @@ A web-based plotting board for tracking train positions on Rapid KL's **Ampang L
 
 Originally built during my IT internship at **Prasarana Malaysia (Rapid Rail)** in 2022 as a digital backup for the IT department's plotting board, then rewritten in 2026 with TypeScript, Express and SQLite.
 
-![Screenshot](docs/screenshot.png)
 
 ## Features
 
